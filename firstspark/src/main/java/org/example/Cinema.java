@@ -7,15 +7,14 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
-
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Main {
+public class Cinema {
+
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+        System.out.println(" welcome to cinema");
 
         Config confifuration = ConfigFactory.load();
         String inputPathStr = confifuration.getString("moi.path.input"); // contient notre repertoire source
@@ -24,7 +23,7 @@ public class Main {
 
         System.out.println( "Hello Spark!" );
 
-        SparkConf sparkConf = new SparkConf().setMaster(masterUrl).setAppName("Main"); // sparkconf permet d'enregistre les configurations de notre  job spark gestionnaire de ressource et le nom de l'appli
+        SparkConf sparkConf = new SparkConf().setMaster(masterUrl).setAppName("Cinema"); // sparkconf permet d'enregistre les configurations de notre  job spark gestionnaire de ressource et le nom de l'appli
 
         SparkSession sparkSession = new SparkSession.Builder().config(sparkConf).getOrCreate();
         // Limitation de la verbosité
@@ -39,10 +38,12 @@ public class Main {
 
         log.info("nombres lines -> inputDS.count()={} ", inputDS.count());
         inputDS.printSchema();
-        inputDS.show(10,false);
+        inputDS.show(5,false);
 
 
         inputDS.write().mode(SaveMode.Overwrite).parquet(outputPathStr);
 
     }
+
+
 }
