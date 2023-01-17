@@ -35,14 +35,14 @@ public class Main {
         // Dataset<Row> anotherPeople = sparkSession.read().json(anotherPeopleDataset);
         // anotherPeople.show();
 
-        Dataset<Row> inputDS = sparkSession.read().csv(inputPathStr);
+        Dataset<Row> inputDS = sparkSession.read().option("delimiter",";").option("header", true).csv(inputPathStr);
 
-        log.info("nombres lines -> inputDS.count()={} ", inputDS.count());
+      //  log.info("nombres lines -> inputDS.count()={} ", inputDS.count());
         inputDS.printSchema();
         inputDS.show(10,false);
 
 
-        inputDS.write().mode(SaveMode.Overwrite).parquet(outputPathStr);
+      //  inputDS.write().mode(SaveMode.Overwrite).parquet(outputPathStr);
 
     }
 }

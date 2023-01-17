@@ -7,8 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sample-spark" />
         <module name="firstspark" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="firstspark" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
